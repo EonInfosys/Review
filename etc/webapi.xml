@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+        <!--Integration  Access Token Bearer Token-->
+    <route url="/V1/products/:sku/reviews" method="GET">
+        <service class="EonInfosys\Review\Api\GetProductReviewsInterface" method="execute"/>
+        <resources>
+            <resource ref="Magento_Review::reviews_all"/>
+        </resources>
+    </route>
+      <!--Integration  Access Token Bearer Token-->
+    <route url="/V1/reviews/:reviewId" method="GET">
+        <service class="EonInfosys\Review\Api\ReviewRepositoryInterface" method="get"/>
+        <resources>
+            <resource ref="Magento_Review::reviews_all"/>
+        </resources>
+    </route>
+    <route url="/V1/reviews/:id" method="PUT">
+        <service class="EonInfosys\Review\Api\ReviewRepositoryInterface" method="save"/>
+        <resources>
+            <resource ref="Magento_Review::reviews_all"/>
+        </resources>
+    </route>
+      <!--add reviews Integration  Access Token Bearer Token POST-->
+    <route url="/V1/reviews" method="POST">
+        <service class="EonInfosys\Review\Api\ReviewRepositoryInterface" method="save"/>
+        <resources>
+            <resource ref="Magento_Review::reviews_all"/>
+        </resources>
+    </route>
+      <!--del Integration  Access Token Bearer Token DELETE-->
+    <route url="/V1/reviews/:reviewId" method="DELETE">
+        <service class="EonInfosys\Review\Api\ReviewRepositoryInterface" method="deleteById"/>
+        <resources>
+            <resource ref="Magento_Review::reviews_all"/>
+        </resources>
+    </route>
+    <route url="/V1/reviews" method="GET">
+        <service class="EonInfosys\Review\Api\ReviewRepositoryInterface" method="getList"/>
+        <resources>
+            <resource ref="Magento_Review::reviews_all"/>
+        </resources>
+    </route>
+</routes>

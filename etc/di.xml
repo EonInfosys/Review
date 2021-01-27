@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Magento\Review\Model\Review" type="EonInfosys\Review\Model\Review"/>
+
+    <preference for="EonInfosys\Review\Api\Data\ReviewInterface" type="EonInfosys\Review\Model\Data\Review"/>
+    <preference for="EonInfosys\Review\Api\Data\RatingVoteInterface" type="EonInfosys\Review\Model\Data\RatingVote"/>
+    <preference for="EonInfosys\Review\Api\GetProductReviewsInterface" type="EonInfosys\Review\Model\GetProductReviews"/>
+    <preference for="EonInfosys\Review\Api\ReviewRepositoryInterface" type="EonInfosys\Review\Model\ReviewRepository"/>
+    <preference for="EonInfosys\Review\Model\Review\Command\DeleteByIdInterface" type="EonInfosys\Review\Model\Review\Command\DeleteById"/>
+    <preference for="EonInfosys\Review\Model\Review\Command\SaveInterface" type="EonInfosys\Review\Model\Review\Command\Save"/>
+    <preference for="EonInfosys\Review\Model\Review\Command\GetInterface" type="EonInfosys\Review\Model\Review\Command\Get"/>
+    <preference for="EonInfosys\Review\Model\Review\Command\GetListInterface" type="EonInfosys\Review\Model\Review\Command\GetList"/>
+    <preference for="EonInfosys\Review\Model\ReviewValidatorInterface" type="EonInfosys\Review\Model\ReviewValidationChain"/>
+
+    <preference for="EonInfosys\Review\Api\Data\ReviewSearchResultInterface" type="EonInfosys\Review\Model\ReviewSearchResult"/>
+    <preference for="EonInfosys\Review\Model\Review\ReviewTypeResolverInterface" type="EonInfosys\Review\Model\Review\ReviewTypeResolver"/>
+
+    <type name="EonInfosys\Review\Model\ReviewValidationChain">
+        <arguments>
+            <argument name="validators" xsi:type="array">
+                <item name="title" xsi:type="object">EonInfosys\Review\Model\Review\Validator\TitleValidator</item>
+                <item name="detail" xsi:type="object">EonInfosys\Review\Model\Review\Validator\DetailValidator</item>
+                <item name="nickname" xsi:type="object">EonInfosys\Review\Model\Review\Validator\NicknameValidator</item>
+                <item name="review_entity" xsi:type="object">EonInfosys\Review\Model\Review\Validator\ReviewEntityValidator</item>
+                <item name="entity_pk_value" xsi:type="object">EonInfosys\Review\Model\Review\Validator\EntityPkValueValidator</item>
+                <item name="stores" xsi:type="object">EonInfosys\Review\Model\Review\Validator\StoresValidator</item>
+            </argument>
+        </arguments>
+    </type>
+    
+</config>
